@@ -19,7 +19,8 @@
     <script>
         $(function () {
             // Reference the auto-generated proxy for the hub.
-            var chat = $.connection.chatHub;
+            // chat = $.connection.chatHub; // chatHub - tên giống với class trong folder Hubs
+            var chat = $.connection.CustomNameChatHub;
             // Create a function that the hub can call back to display messages.
             chat.client.addNewMessageToPage = function (name, message) {
                 // Add the message to the page.
@@ -34,7 +35,7 @@
             $.connection.hub.start().done(function () {
                 $('#sendmessage').click(function () {
                     // Call the Send method on the hub.
-                    chat.server.sendP($('#displayname').val(), $('#message').val());
+                    chat.server.SendP($('#displayname').val(), $('#message').val());
                     // Clear text box and reset focus for next comment.
                     $('#message').val('').focus();
                 });
